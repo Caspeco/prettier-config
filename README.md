@@ -13,7 +13,7 @@ Add the dependency and mapping for prettier configuration:
    "version": "1.0.0",
 +  "prettier": "@caspeco/prettier-config",
    "devDependencies": {
-+    "@caspeco/prettier-config": "github:caspeco/prettier-config#1.0.0",
++    "@caspeco/prettier-config": "github:caspeco/prettier-config#1.0.1",
    }
  }
 ```
