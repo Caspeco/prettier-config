@@ -1,0 +1,29 @@
+{
+	"name": "@caspeco/prettier-config",
+	"version": "1.0.0",
+	"description": "Caspeco prettier config",
+	"main": "index.js",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/caspeco/prettier-config.git"
+	},
+	"bugs": {
+		"url": "https://github.com/caspeco/prettier-config/issues"
+	},
+	"keywords": [
+		"prettier",
+		"prettier-config"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"prettier:check": "prettier --check .",
+		"prettier:fix": "prettier --write ."
+	},
+	"prettier": "./index.js",
+	"devDependencies": {
+		"prettier": "^3.2.5"
+	}
+}
