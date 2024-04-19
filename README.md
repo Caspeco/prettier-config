@@ -7,11 +7,14 @@ Shared config for prettier
 Add the dependency and mapping for prettier configuration:
 
 ```
-"prettier": "@caspeco/prettier-config",
-"devDependencies": {
-  ...
-  "@caspeco/prettier-config": "github:caspeco/prettier-config#1.0.0",
-  ...
+// package.json
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "prettier": "@caspeco/prettier-config",
+  "devDependencies": {
+    "@caspeco/prettier-config": "github:caspeco/prettier-config#1.0.0",
+  }
 }
 ```
 
