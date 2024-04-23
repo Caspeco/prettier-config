@@ -28,7 +28,7 @@ jobs:
 
       - name: Get package.json version
         id: get-version
-        run: echo "{version}={$(cat package.json | jq -r '.version')}" >> $GITHUB_OUTPUT
+        run: echo "version=$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
 
       - name: Compare package.json version with release tag
         run: |
