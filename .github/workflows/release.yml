@@ -9,7 +9,42 @@ permissions:
   contents: read
 
 jobs:
+  publish-gpr:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read node and npm versions from package.json
+        uses: skjnldsv/read-package-engines-version-actions@v3
+        id: package-engines-versions
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
+          registry-url: https://npm.pkg.github.com/
+
+      - name: Get package.json version
+        id: get-version
+        run: echo "{version}={$(cat package.json | jq -r '.version')}" >> $GITHUB_OUTPUT
+
+      - name: Compare package.json version with release tag
+        run: |
+          if [ "${{ steps.get-version.outputs.version }}" != "${{ github.event.release.tag_name }}" ]; then
+            echo "Version in package.json (${{ steps.get-version.outputs.version }}) does not match release tag (${{ github.event.release.tag_name }})."
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   notify:
+    needs: [publish-gpr]
     name: Notify
     if: ${{ !github.event.release.prerelease }}
     runs-on: ubuntu-latest
