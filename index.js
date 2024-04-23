@@ -9,7 +9,7 @@ module.exports = {
 	printWidth: 110,
 
 	// allow CRLF locally on windows
-	// MUST SET "* text=auto" in .gitattributes (!)
+	// MUST SET "* text=auto" IN .gitattributes (!)
 	endOfLine: "auto",
 
 	// Default rules from Prettier 3.2.5 below
