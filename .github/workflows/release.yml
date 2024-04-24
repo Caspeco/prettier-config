@@ -28,7 +28,7 @@ jobs:
 
       - run: npm ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
+          GPR_PRIVATE_READ_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
 
       - run: npm version ${TAG_NAME} --git-tag-version=false
         env:
