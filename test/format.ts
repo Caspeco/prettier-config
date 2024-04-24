@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import baseConfig from "../index";
 import prettier from "prettier";
 
-export const format = async (file: string, config = baseConfig) => {
+export async function format(file: string, config = baseConfig): Promise<string> {
 	try {
 		const buffer = await fs.readFile(file);
 		const code = buffer.toString("utf8");
@@ -18,4 +18,4 @@ export const format = async (file: string, config = baseConfig) => {
 		console.error(`Error formatting file ${file}:`, error);
 		throw error;
 	}
-};
+}
