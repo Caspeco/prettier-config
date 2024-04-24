@@ -1,15 +1,15 @@
 import fs from "node:fs/promises";
 import baseConfig from "../index";
-import synchronizedPrettier from "@prettier/sync";
+import prettier from "prettier";
 
 export const format = async (file: string, config = baseConfig) => {
 	try {
 		const buffer = await fs.readFile(file);
 		const code = buffer.toString("utf8");
 
-		const result = synchronizedPrettier.format(code, {
+		const result = await prettier.format(code, {
 			...config,
-			file,
+			filepath: file,
 			parser: "typescript",
 		});
 

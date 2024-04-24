@@ -31,7 +31,6 @@
 	},
 	"prettier": "./index.js",
 	"devDependencies": {
-		"@prettier/sync": "^0.5.2",
 		"@types/node": "^20.12.7",
 		"prettier": "^3.2.5",
 		"vite": "^5.2.10",
