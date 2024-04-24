@@ -7,7 +7,6 @@ export async function getFilteredFilePaths(directory: string, ignoreFiles: strin
 	try {
 		const files: Dirent[] = await readdir(directory, { withFileTypes: true });
 
-		// Filter files according to your requirements
 		const paths: string[] = files
 			.filter((file: Dirent) => !ignoreFiles.includes(file.name))
 			.map((file: Dirent) => join(directory, file.name));

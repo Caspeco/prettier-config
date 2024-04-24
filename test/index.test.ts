@@ -3,28 +3,43 @@ import { format } from "./format";
 import { getFilteredFilePaths } from "./util";
 import { basename } from "path";
 import { describe } from "node:test";
+import baseConfig from "../index";
+import { Options } from "prettier";
 
 interface TestInput {
+	description: string;
 	content: string;
+	config: Options;
 	snapFile: string;
 }
 
-const args: TestInput[] = [];
-
-await getFilteredFilePaths("test/__fixtures__", []).then(async (paths: string[]) => {
-	for (const filePath of paths) {
-		const result = await format(filePath);
-		const snapshotFilePath = `./__snapshots__/${basename(filePath)}.snap`;
-
-		args.push({
-			content: result,
-			snapFile: snapshotFilePath,
-		});
-	}
-});
+const fixtureTests = await setupConfigTest("test/__fixtures__", []);
 
 describe("checks formatting", () => {
-	it.each(args)("should match snapshots", async ({ content, snapFile }) => {
-		expect(content).toMatchFileSnapshot(snapFile);
-	});
+	it.each(fixtureTests)(
+		"should match snapshots ($description) matches $snapFile",
+		async ({ content, snapFile }) => {
+			expect(content).toMatchFileSnapshot(snapFile);
+		},
+	);
 });
+
+async function setupConfigTest(path: string, ignoreFiles: string[]): Promise<TestInput[]> {
+	const filePaths = await getFilteredFilePaths(path, ignoreFiles);
+
+	const tests = await Promise.all(
+		filePaths.map(async (filePath: string) => {
+			const result = await format(filePath, baseConfig);
+			const snapshotFilePath = `./__snapshots__/${basename(filePath)}.snap`;
+
+			return {
+				description: `${basename(filePath)}`,
+				content: result,
+				config: baseConfig,
+				snapFile: snapshotFilePath,
+			};
+		}),
+	);
+
+	return tests;
+}
