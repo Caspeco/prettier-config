@@ -26,20 +26,13 @@ jobs:
           node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
           registry-url: https://npm.pkg.github.com/
 
-      - name: Get package.json version
-        id: get-version
-        run: echo "version=$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
-
-      - name: Compare package.json version with release tag
-        run: |
-          if [ "${{ steps.get-version.outputs.version }}" != "${{ github.event.release.tag_name }}" ]; then
-            echo "Version in package.json (${{ steps.get-version.outputs.version }}) does not match release tag (${{ github.event.release.tag_name }})."
-            exit 1
-          fi
-
       - run: npm ci
 
-      - run: npm publish
+      - run: npm version ${TAG_NAME} --git-tag-version=false
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+
+      - run: npm whoami; npm --ignore-scripts publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
