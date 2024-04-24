@@ -27,6 +27,7 @@ Run `npm install`.
 Create a PAT (Classic) on Github with the scope "Packages: Read".
 
 Create a `.npmrc`:
+
 ```
 @caspeco:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${GPR_PRIVATE_READ_TOKEN}
