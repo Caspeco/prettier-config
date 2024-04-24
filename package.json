@@ -25,10 +25,16 @@
 	},
 	"scripts": {
 		"prettier:check": "prettier --check .",
-		"prettier:fix": "prettier --write ."
+		"prettier:fix": "prettier --write .",
+		"test": "vitest",
+		"ci-test": "CI=true vitest"
 	},
 	"prettier": "./index.js",
 	"devDependencies": {
-		"prettier": "^3.2.5"
+		"@prettier/sync": "^0.5.2",
+		"@types/node": "^20.12.7",
+		"prettier": "^3.2.5",
+		"vite": "^5.2.10",
+		"vitest": "^1.5.0"
 	}
 }
