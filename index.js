@@ -2,11 +2,17 @@
  * @type {import('prettier').Options}
  */
 module.exports = {
-	// Overridden rules
+	// better for a11y + allows for personalized indentation locally
 	useTabs: true,
+
+	// sensible default
 	printWidth: 110,
 
-	// Default rules from Prettier 3.2.5
+	// allow CRLF locally on windows
+	// MUST SET "* text=auto" IN .gitattributes (!)
+	endOfLine: "auto",
+
+	// Default rules from Prettier 3.2.5 below
 	tabWidth: 2,
 	semi: true,
 	singleQuote: false,
@@ -25,7 +31,6 @@ module.exports = {
 	proseWrap: "preserve",
 	htmlWhitespaceSensitivity: "css",
 	vueIndentScriptAndStyle: false,
-	endOfLine: "lf",
 	embeddedLanguageFormatting: "auto",
 	singleAttributePerLine: false,
 };
