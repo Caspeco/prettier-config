@@ -24,11 +24,21 @@
 		"@caspeco:registry": "https://npm.pkg.github.com"
 	},
 	"scripts": {
+		"lint": "eslint . --ext ts,tsx,js --report-unused-disable-directives --max-warnings 0",
+		"lint:fix": "eslint . --ext ts,tsx,js --report-unused-disable-directives --fix",
 		"prettier:check": "prettier --check .",
-		"prettier:fix": "prettier --write ."
+		"prettier:fix": "prettier --write .",
+		"test": "vitest",
+		"ci-test": "CI=true vitest"
 	},
 	"prettier": "./index.js",
 	"devDependencies": {
+		"@types/node": "^20.12.7",
+		"@caspeco/eslint-config": "1.0.2",
+		"vite": "^5.2.10",
+		"vitest": "^1.5.0"
+	},
+	"dependencies": {
 		"prettier": "^3.2.5"
 	}
 }
