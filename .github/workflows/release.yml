@@ -27,8 +27,6 @@ jobs:
           registry-url: https://npm.pkg.github.com/
 
       - run: npm ci
-        env:
-          GPR_PRIVATE_READ_TOKEN: ${{ secrets.GPR_PRIVATE_READ_TOKEN }}
 
       - run: npm version ${TAG_NAME} --git-tag-version=false
         env:
@@ -37,6 +35,33 @@ jobs:
       - run: npm --ignore-scripts publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-npm:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read node and npm versions from package.json
+        uses: skjnldsv/read-package-engines-version-actions@v3
+        id: package-engines-versions
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+
+      - run: npm version ${TAG_NAME} --git-tag-version=false
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
+
+      - run: npm --ignore-scripts publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
 
   notify:
     needs: [publish-gpr]
