@@ -6,31 +6,17 @@ Shared config for prettier
 
 ### Option 1: Git reference
 
-Add the dependency and mapping for prettier configuration:
+```bash
+npm i @caspeco/prettier-config
+```
 
 ```diff
  // package.json
  {
    "name": "my-project",
    "version": "1.0.0",
-+  "prettier": "@caspeco/prettier-config",
-   "devDependencies": {
-+    "@caspeco/prettier-config": "github:caspeco/prettier-config#<MAJOR.MINOR.PATCH>",
-   }
++  "prettier": "@caspeco/prettier-config"
  }
-```
-
-Run `npm install`.
-
-### Option 2: Github Packages
-
-Create a PAT (Classic) on Github with the scope "Packages: Read".
-
-Create a `.npmrc`:
-
-```
-@caspeco:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${GPR_PRIVATE_READ_TOKEN}
 ```
 
 Set a local environment variable named `GPR_PRIVATE_READ_TOKEN` which contains the token created above.
