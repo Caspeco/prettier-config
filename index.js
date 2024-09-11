@@ -1,7 +1,7 @@
 /**
  * @type {import('prettier').Options}
  */
-module.exports = {
+const config = {
 	// better for a11y + allows for personalized indentation locally
 	useTabs: true,
 
@@ -34,3 +34,5 @@ module.exports = {
 	embeddedLanguageFormatting: "auto",
 	singleAttributePerLine: false,
 };
+
+export default config;
