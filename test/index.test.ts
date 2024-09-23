@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { expect, it } from "vitest";
 import { format } from "./format";
 import { getFilteredFilePaths } from "./util";
@@ -17,9 +18,9 @@ const fixtureTests = await setupConfigTest("test/__fixtures__", []);
 
 describe("checks formatting", () => {
 	it.each(fixtureTests)(
-		"should match snapshots ($description) matches $snapFile",
+		"should match snapshots $description matches $snapFile",
 		async ({ content, snapFile }) => {
-			expect(content).toMatchFileSnapshot(snapFile);
+			await expect(content).toMatchFileSnapshot(snapFile);
 		},
 	);
 });
@@ -43,3 +44,4 @@ async function setupConfigTest(path: string, ignoreFiles: string[]): Promise<Tes
 
 	return tests;
 }
+/* eslint-enable @typescript-eslint/no-floating-promises */
