@@ -13,7 +13,8 @@ export async function getFilteredFilePaths(directory: string, ignoreFiles: strin
 
 		return paths;
 	} catch (error) {
-		console.error(`Error reading directory: ${error}`);
+		console.error("Error reading directory");
+		console.error(error);
 		return [];
 	}
 }
