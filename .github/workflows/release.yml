@@ -32,6 +32,9 @@ jobs:
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
 
+      - name: Delete engines field from package.json
+        run: npm pkg delete engines
+
       - run: npm --ignore-scripts publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -58,6 +61,9 @@ jobs:
       - run: npm version ${TAG_NAME} --git-tag-version=false
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
+
+      - name: Delete engines field from package.json
+        run: npm pkg delete engines
 
       - run: npm --ignore-scripts publish --access public
         env:
