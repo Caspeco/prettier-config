@@ -16,7 +16,7 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      minor-and-patch:
+      minor-and-patch-updates:
         patterns:
-          - "minor"
-          - "patch"
+          - "update-types: 'version-update:semver-minor'"
+          - "update-types: 'version-update:semver-patch'"
