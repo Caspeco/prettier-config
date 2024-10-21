@@ -23,7 +23,6 @@ Set a local environment variable named `GPR_PRIVATE_READ_TOKEN` which contains t
 
 Add the package using the version you want at the [Github Package](https://github.com/Caspeco/prettier-config/pkgs/npm/prettier-config).
 
-
 ## Release
 
 - Go to [Github Releases](https://github.com/Caspeco/prettier-config/releases)
