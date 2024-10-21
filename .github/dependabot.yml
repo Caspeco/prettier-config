@@ -16,7 +16,7 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      minor-and-patch-updates:
-        patterns:
-          - dependency-name: "*"
-        bump-version: "semver:minor"
+      minor-and-patch:
+        update-types:
+          - "minor"
+          - "patch"
