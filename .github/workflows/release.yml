@@ -21,7 +21,7 @@ jobs:
         uses: skjnldsv/read-package-engines-version-actions@v3
         id: package-engines-versions
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
           registry-url: https://npm.pkg.github.com/
@@ -51,7 +51,7 @@ jobs:
         uses: skjnldsv/read-package-engines-version-actions@v3
         id: package-engines-versions
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
           registry-url: "https://registry.npmjs.org"
