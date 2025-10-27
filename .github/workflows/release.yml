@@ -32,7 +32,7 @@ jobs:
       - name: Delete engines field from package.json
         run: npm pkg delete engines
 
-      - run: npm --ignore-scripts publish --access public
+      - run: npm --ignore-scripts publish --access public --provenance
 
   notify:
     needs: [publish-npm]
