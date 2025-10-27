@@ -21,7 +21,6 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
-          registry-url: "https://registry.npmjs.org"
 
       - run: npm ci
 
