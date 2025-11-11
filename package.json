@@ -36,7 +36,8 @@
 		"prettier": "^3.0.0"
 	},
 	"devDependencies": {
-		"@caspeco/eslint-config": "4.1.2",
+		"@babel/core": "^7.28.5",
+		"@caspeco/eslint-config": "4.2.1",
 		"prettier": "^3.2.5",
 		"vite": "^7.0.0",
 		"vitest": "^3.0.2"
