@@ -30,9 +30,6 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Security audit
-        run: npm audit --audit-level=moderate
-
       - name: Tests
         run: npm run ci-test
 
@@ -41,3 +38,6 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Security audit
+        run: npm audit --audit-level=moderate
