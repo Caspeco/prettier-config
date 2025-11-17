@@ -36,10 +36,10 @@
 		"prettier": "^3.0.0"
 	},
 	"devDependencies": {
-		"@caspeco/eslint-config": "4.0.5",
+		"@caspeco/eslint-config-ts": "^5.0.0",
+		"@types/node": "^24.10.1",
 		"prettier": "^3.2.5",
 		"vite": "^7.0.0",
-		"vitest": "^3.0.2"
-	},
-	"dependencies": {}
+		"vitest": "^4.0.9"
+	}
 }
