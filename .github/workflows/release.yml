@@ -14,13 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Read node and npm versions from package.json
-        uses: skjnldsv/read-package-engines-version-actions@v3
-        id: package-engines-versions
-
       - uses: actions/setup-node@v6
         with:
-          node-version: ${{ steps.package-engines-versions.outputs.nodeVersion }}
+          node-version-file: 'package.json'
 
       - run: npm ci
 
