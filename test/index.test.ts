@@ -14,7 +14,7 @@ interface TestInput {
 	snapFile: string;
 }
 
-const fixtureTests = await setupConfigTest("test/__fixtures__", []);
+const fixtureTests = await setupConfigTest("test/__fixtures__", []); // eslint-disable-line baseline-js/use-baseline
 
 describe("checks formatting", () => {
 	it.each(fixtureTests)(
